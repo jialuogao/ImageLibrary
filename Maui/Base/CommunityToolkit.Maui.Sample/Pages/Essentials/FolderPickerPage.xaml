@@ -19,15 +19,18 @@
                 Text="Pick Folder using FolderPicker from DI Container"
                 HorizontalOptions="Center"/>
 
+        <Button Command="{Binding ListImagesCommand}"
+                Text="List Images in the selected directory"
+                HorizontalOptions="Center"/>
         
-        <Button Command="{Binding PickFolderStaticCommand}"
+        <!--<Button Command="{Binding PickFolderStaticCommand}"
                 Text="Pick Folder using static FolderPicker"
                 HorizontalOptions="Center"/>
 
         
         <Button Command="{Binding PickFolderInstanceCommand}"
                 Text="Pick Folder using new instance of FolderPicker"
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"/>-->
     </VerticalStackLayout>
     
 </pages:BasePage>
