@@ -2,6 +2,8 @@
 using CommunityToolkit.Maui.Core.Views;
 using CommunityToolkit.Maui.Sample.ViewModels.Views;
 using CommunityToolkit.Maui.Views;
+using Color = Microsoft.Maui.Graphics.Color;
+using Size = Microsoft.Maui.Graphics.Size;
 
 namespace CommunityToolkit.Maui.Sample.Pages.Views;
 

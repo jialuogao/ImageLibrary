@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Sample.ViewModels.Views;
 using CommunityToolkit.Maui.Sample.Views.Popups;
 using CommunityToolkit.Maui.Views;
+using Size = Microsoft.Maui.Graphics.Size;
 
 namespace CommunityToolkit.Maui.Sample.Pages.Views;
 

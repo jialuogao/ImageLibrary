@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using CommunityToolkit.Maui.Sample.ViewModels.Layouts;
+using Color = Microsoft.Maui.Graphics.Color;
 
 namespace CommunityToolkit.Maui.Sample.Pages.Layouts;
 

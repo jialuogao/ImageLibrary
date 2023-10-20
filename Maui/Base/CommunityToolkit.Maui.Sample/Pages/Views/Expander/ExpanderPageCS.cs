@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Markup;
 using CommunityToolkit.Maui.Views;
+using Image = Microsoft.Maui.Controls.Image;
 
 namespace CommunityToolkit.Maui.Sample.Pages.Views;
 

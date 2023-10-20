@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui.Views;
+using Size = Microsoft.Maui.Graphics.Size;
 
 namespace CommunityToolkit.Maui.Sample.Views.Popups;
 

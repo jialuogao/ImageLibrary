@@ -7,6 +7,9 @@ using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Color = Microsoft.Maui.Graphics.Color;
+using PointF = Microsoft.Maui.Graphics.PointF;
+using Size = Microsoft.Maui.Graphics.Size;
 
 namespace CommunityToolkit.Maui.Sample.ViewModels.Views;
 

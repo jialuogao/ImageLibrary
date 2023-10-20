@@ -1,4 +1,6 @@
-﻿namespace CommunityToolkit.Maui.Sample.Models;
+﻿using Size = Microsoft.Maui.Graphics.Size;
+
+namespace CommunityToolkit.Maui.Sample.Models;
 
 public class PopupSizeConstants
 {

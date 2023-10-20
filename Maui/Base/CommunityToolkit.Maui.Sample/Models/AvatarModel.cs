@@ -1,4 +1,6 @@
-﻿namespace CommunityToolkit.Maui.Sample.Models;
+﻿using Color = Microsoft.Maui.Graphics.Color;
+
+namespace CommunityToolkit.Maui.Sample.Models;
 
 public class AvatarModel
 {

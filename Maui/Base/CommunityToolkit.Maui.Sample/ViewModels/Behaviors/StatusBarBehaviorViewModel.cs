@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Color = Microsoft.Maui.Graphics.Color;
 
 namespace CommunityToolkit.Maui.Sample.ViewModels.Behaviors;
 public partial class StatusBarBehaviorViewModel : BaseViewModel

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Color = Microsoft.Maui.Graphics.Color;
 
 namespace CommunityToolkit.Maui.Sample.ViewModels.Behaviors;
 

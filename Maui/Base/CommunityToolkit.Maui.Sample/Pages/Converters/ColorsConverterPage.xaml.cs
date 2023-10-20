@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Security.Cryptography;
 using CommunityToolkit.Maui.Sample.ViewModels.Converters;
+using Color = Microsoft.Maui.Graphics.Color;
 
 namespace CommunityToolkit.Maui.Sample.Pages.Converters;
 

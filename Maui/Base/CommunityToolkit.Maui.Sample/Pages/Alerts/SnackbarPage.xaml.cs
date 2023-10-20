@@ -6,6 +6,7 @@ using CommunityToolkit.Maui.Markup;
 using CommunityToolkit.Maui.Sample.Resources.Fonts;
 using CommunityToolkit.Maui.Sample.ViewModels.Alerts;
 using CommunityToolkit.Mvvm.Input;
+using Color = Microsoft.Maui.Graphics.Color;
 using Font = Microsoft.Maui.Font;
 
 namespace CommunityToolkit.Maui.Sample.Pages.Alerts;

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui.Sample.ViewModels;
+using Color = Microsoft.Maui.Graphics.Color;
 
 namespace CommunityToolkit.Maui.Sample.Models;
 
