@@ -19,8 +19,8 @@
                 Text="Pick Folder using FolderPicker from DI Container"
                 HorizontalOptions="Center"/>
 
-        <Button Command="{Binding ListImagesCommand}"
-                Text="List Images in the selected directory"
+        <Button Command="{Binding ListDuplicateImagesCommand}"
+                Text="List Duplicate Images in the selected directory"
                 HorizontalOptions="Center"/>
         
         <!--<Button Command="{Binding PickFolderStaticCommand}"

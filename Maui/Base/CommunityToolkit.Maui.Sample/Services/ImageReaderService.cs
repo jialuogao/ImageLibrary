@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CommunityToolkit.Maui.Sample.Entities;
+using CommunityToolkit.Maui.Sample.Repositories;
 
 namespace CommunityToolkit.Maui.Sample.Services;
 public partial class ImageReaderService
 {
 	string? directoryPath;
+	ImageLibraryRepository? imageLibraryRepository;
 
 	HashSet<string> supportedImageFormats = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase)
 	{
@@ -22,12 +25,21 @@ public partial class ImageReaderService
 
 	}
 
-	public void SetDirectoryPath(string directoryPath)
+	public void SetDirectoryPath(string directoryPath, bool preloadImages = false)
 	{
 		this.directoryPath = directoryPath;
+		if (preloadImages)
+		{
+			List<string> imageFiles = this.GetImageFilePaths();
+			this.imageLibraryRepository = new ImageLibraryRepository(imageFiles);
+		}
+		else
+		{
+			this.imageLibraryRepository = new ImageLibraryRepository();
+		}
 	}
 
-	public IList<string> GetImageFiles()
+	public List<string> GetImageFilePaths()
 	{
 		if (string.IsNullOrEmpty(this.directoryPath))
 		{
@@ -37,7 +49,23 @@ public partial class ImageReaderService
 		return EnumerateFiles(this.supportedImageFormats.ToList());
 	}
 
-	protected IList<string> EnumerateFiles(List<string> imageFormats)
+	public List<List<ImageMetadata>> GetDuplicateImages()
+	{
+		if(this.imageLibraryRepository == null)
+		{
+			throw new InvalidOperationException("Image library repository is not initialized");
+		}
+
+		if(!this.imageLibraryRepository.IsLoaded)
+		{
+			this.imageLibraryRepository.LoadImageCollection(this.GetImageFilePaths());
+		}
+		var imageCollection = this.imageLibraryRepository.GetImageCollection();
+		var duplicateImages = imageCollection.Where(x => x.Value.Count > 1).Select(x => x.Value).ToList();
+		return duplicateImages;
+	}
+
+	protected List<string> EnumerateFiles(List<string> imageFormats)
 	{
 		if (string.IsNullOrEmpty(this.directoryPath))
 		{

@@ -35,14 +35,15 @@ public partial class FolderPickerViewModel : BaseViewModel
 	}
 
 	[RelayCommand]
-	async Task ListImages(CancellationToken cancellationToken)
+	async Task ListDuplicateImages(CancellationToken cancellationToken)
 	{
 		var displayText = string.Empty;
 		try
 		{
-			var images = this.imageReaderService.GetImageFiles();
-			displayText = string.Join(Environment.NewLine, images);
-			displayText += $"{Environment.NewLine}Images count - {images.Count}";
+			var images = this.imageReaderService.GetDuplicateImages();
+			List<string> firstDuplicateImage = images.First().Select(image => image.FilePath).ToList();
+			displayText = string.Join(Environment.NewLine, firstDuplicateImage);
+			displayText += $"{Environment.NewLine}Images count: {firstDuplicateImage.Count}";
 		}
 		catch (Exception e)
 		{
