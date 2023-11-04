@@ -22,4 +22,9 @@ public partial class FolderPickerPage : BasePage<FolderPickerViewModel>
 				Source = ImageSource.FromFile(@"C:\src\ImageLibrary\Maui\Base\TestData.ignore\SustainabilityBadge.jpg"),
 			});
 	}
+
+	protected override void OnDisappearing()
+	{
+		this.BindingContext.SaveImageReaderServiceFileCacheAsync().ConfigureAwait(false);
+	}
 }

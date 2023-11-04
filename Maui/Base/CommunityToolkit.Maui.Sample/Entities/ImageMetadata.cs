@@ -1,13 +1,15 @@
 ﻿using CommunityToolkit.Maui.Sample.Utilities;
 using SixLabors.ImageSharp.Formats;
+using YamlDotNet.Serialization;
 using Image = SixLabors.ImageSharp.Image;
 
 namespace CommunityToolkit.Maui.Sample.Entities;
 
 public class ImageMetadata
 {
-	public string FilePath { get; set; }
+	public string FilePath { get; private set; }
 
+	[YamlIgnore]
 	public string FileName
 	{
 		get
@@ -16,6 +18,7 @@ public class ImageMetadata
 		}
 	}
 
+	[YamlIgnore]
 	public string FileExtension
 	{
 		get
@@ -44,7 +47,7 @@ public class ImageMetadata
 
 	byte[]? imageHashSha256 = null;
 
-	public byte[] ImageHashSha256
+	protected byte[] ImageHashSha256
 	{
 		get
 		{
@@ -65,6 +68,10 @@ public class ImageMetadata
 		get
 		{
 			return Convert.ToBase64String(this.ImageHashSha256);
+		}
+		private set
+		{
+			this.ImageHashSha256 = Convert.FromBase64String(value);
 		}
 	}
 
@@ -106,6 +113,7 @@ public class ImageMetadata
 
 	Image? image = null;
 
+	[YamlIgnore]
 	public Image Image
 	{
 		get
@@ -122,6 +130,7 @@ public class ImageMetadata
 
 	byte[]? bytes = null;
 
+	[YamlIgnore]
 	public byte[] Bytes
 	{
 		get
@@ -132,6 +141,11 @@ public class ImageMetadata
 			}
 			return bytes;
 		}
+	}
+
+	public ImageMetadata()
+	{
+		this.FilePath = string.Empty;
 	}
 
 	public ImageMetadata(string filePath, bool preloadImageMetadata)

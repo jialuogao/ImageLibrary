@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using CommunityToolkit.Maui.Sample.Entities;
+﻿using CommunityToolkit.Maui.Sample.Entities;
 using CommunityToolkit.Maui.Sample.Repositories;
 
 namespace CommunityToolkit.Maui.Sample.Services;
@@ -25,6 +23,14 @@ public partial class ImageReaderService
 
 	}
 
+	public async Task SaveImageReaderServiceFileCacheAsync()
+	{
+		if (this.imageLibraryRepository != null)
+		{
+			await this.imageLibraryRepository.SaveImageCollectionToFileAsync();
+		}
+	}
+
 	public void SetDirectoryPath(string directoryPath, bool preloadImages = false)
 	{
 		this.directoryPath = directoryPath;
@@ -45,20 +51,20 @@ public partial class ImageReaderService
 		{
 			throw new InvalidOperationException("Directory path is not set");
 		}
-		
+
 		return EnumerateFiles(this.supportedImageFormats.ToList());
 	}
 
-	public List<List<ImageMetadata>> GetDuplicateImages()
+	public async Task<List<List<ImageMetadata>>> GetDuplicateImages()
 	{
-		if(this.imageLibraryRepository == null)
+		if (this.imageLibraryRepository == null)
 		{
 			throw new InvalidOperationException("Image library repository is not initialized");
 		}
 
-		if(!this.imageLibraryRepository.IsLoaded)
+		if (!this.imageLibraryRepository.IsLoaded)
 		{
-			this.imageLibraryRepository.LoadImageCollection(this.GetImageFilePaths());
+			await this.imageLibraryRepository.LoadImageCollection(this.GetImageFilePaths());
 		}
 		var imageCollection = this.imageLibraryRepository.GetImageCollection();
 		var duplicateImages = imageCollection.Where(x => x.Value.Count > 1).Select(x => x.Value).ToList();

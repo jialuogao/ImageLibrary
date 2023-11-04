@@ -11,10 +11,16 @@ public partial class FolderPickerViewModel : BaseViewModel
 	readonly IFolderPicker folderPicker;
 	readonly ImageReaderService imageReaderService;
 
-	public FolderPickerViewModel(IFolderPicker folderPicker)
+	public FolderPickerViewModel(IFolderPicker folderPicker, ImageReaderService imageReaderService)
 	{
 		this.folderPicker = folderPicker;
-		this.imageReaderService = new ImageReaderService();
+		this.imageReaderService = imageReaderService;
+	}
+
+	public async Task SaveImageReaderServiceFileCacheAsync()
+	{
+		//TODO: save image reader service file cache only when value is changed
+		await this.imageReaderService.SaveImageReaderServiceFileCacheAsync();
 	}
 
 	[RelayCommand]
@@ -40,7 +46,7 @@ public partial class FolderPickerViewModel : BaseViewModel
 		var displayText = string.Empty;
 		try
 		{
-			var images = this.imageReaderService.GetDuplicateImages();
+			var images = await this.imageReaderService.GetDuplicateImages();
 			List<string> firstDuplicateImage = images.First().Select(image => image.FilePath).ToList();
 			displayText = string.Join(Environment.NewLine, firstDuplicateImage);
 			displayText += $"{Environment.NewLine}Images count: {firstDuplicateImage.Count}";

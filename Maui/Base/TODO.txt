@@ -1,0 +1,17 @@
+File cache image metadata
+    Internal hash to check if file is replaced with different file of same name, recompute metadata if so
+    On load check if metadata file needs update
+    Auto save metadata only if there is an update to the file when close the program.
+When load we do lazy load, thus related info will not be there during save if nothing is loaded, re-evaluate this behavior
+UI display image loaded from disk
+    Display image from path
+    Group by sha256 hash view
+More image matching algo
+    Image similarity algo that doesn't require exact matching
+        Research for existing soltion
+        Resolution diff only mode
+        Similar mode (can be slitly different in color, Mosaic, only differet in some text bubble, etc)
+    Sort image by general color of upper left corner of the image
+Backend thread check/recompute organization collection when any sub folder is changed (by date? by hash?)
+File cache image organization collection vs only cache image metadata? (might have different types of collections)
+    Do the same for organization collection as image metadata if decided to save

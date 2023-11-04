@@ -13,6 +13,7 @@ using CommunityToolkit.Maui.Sample.Pages.ImageSources;
 using CommunityToolkit.Maui.Sample.Pages.Layouts;
 using CommunityToolkit.Maui.Sample.Pages.Views;
 using CommunityToolkit.Maui.Sample.Resources.Fonts;
+using CommunityToolkit.Maui.Sample.Services;
 using CommunityToolkit.Maui.Sample.ViewModels;
 using CommunityToolkit.Maui.Sample.ViewModels.Alerts;
 using CommunityToolkit.Maui.Sample.ViewModels.Behaviors;
@@ -195,6 +196,9 @@ public static class MauiProgram
 		// Add Popups
 		services.AddTransient<CsharpBindingPopup, CsharpBindingPopupViewModel>();
 		services.AddTransient<XamlBindingPopup, XamlBindingPopupViewModel>();
+
+		// Add Custom
+		services.AddSingleton<ImageReaderService>();
 	}
 
 	static void RegisterEssentials(in IServiceCollection services)
